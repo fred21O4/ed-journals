@@ -48,7 +48,9 @@ impl FromStr for Atmosphere {
             });
         }
 
-        let Some(captures) = ATMOSPHERE_REGEX.captures(s) else {
+        let s = s.to_lowercase();
+
+        let Some(captures) = ATMOSPHERE_REGEX.captures(&s) else {
             return Err(AtmosphereError::FailedToParse(s.to_string()));
         };
 
